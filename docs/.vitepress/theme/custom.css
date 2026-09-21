@@ -27,3 +27,37 @@
 
   --vp-home-hero-name-background: linear-gradient(120deg, #c491e5, #b06fdf);
 }
+
+/* Diagrams that happen to be wider than the prose column scroll horizontally rather than being
+   shrunk until the text is unreadable. (The flow diagrams are drawn top-to-bottom to fit the
+   column, so this is just a safety net.) */
+.vp-doc .mermaid {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* VitePress prose styles (paragraph margins, tall line-height) leak into the HTML labels inside
+   mermaid nodes and inflate the text past the box mermaid sized for it, clipping the last line of
+   multi-line labels. Reset that spacing inside diagrams, and let node labels overflow their box
+   rather than clip, so multi-line text always fits. */
+.vp-doc .mermaid p {
+  margin: 0;
+  line-height: 1.5;
+}
+.vp-doc .mermaid .node foreignObject {
+  overflow: visible;
+}
+
+/* Edge labels (text on arrows) get a background that hugs the text with no padding, which looks
+   cramped. Keep mermaid's theme-appropriate background colour but add padding and round the
+   corners, and let the padded label overflow its fixed box so nothing is clipped. */
+.vp-doc .mermaid .edgeLabel foreignObject {
+  overflow: visible;
+}
+.vp-doc .mermaid .edgeLabel {
+  background: transparent;
+}
+.vp-doc .mermaid .edgeLabel p {
+  padding: 2px 8px;
+  border-radius: 5px;
+}

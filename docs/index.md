@@ -4,24 +4,30 @@ layout: home
 
 hero:
   name: "Armada"
-  text: "Protocol documentation"
-  tagline: How the Armada protocol works — concepts, architecture, and guides.
+  text: "Privacy for on-chain finance"
+  tagline: Cross-chain private USDC settlement with shielded yield.
   image:
     src: /armada-mark-color.svg
     alt: Armada
   actions:
     - theme: brand
-      text: Read the guide
+      text: Learn more
       link: /guide/
     - theme: alt
-      text: SDK docs
+      text: SDK reference
       link: https://sdk.armada.blue
 
 features:
   - title: Understand the protocol
-    details: The concepts and architecture behind Armada's shielded pool.
+    details: Architecture, core flows, and implementation details.
+    link: /architecture/
+  - title: Private by design
+    details: Armada's privacy model and what it hides (and what it doesn't).
+    link: /crypto/privacy
+  - title: Owned and governed
+    details: The ARM token, community governance, revenue-based unlocks, and wind-down.
+    link: /governance/
   - title: Build on Armada
-    details: Guides for integrating with the protocol, and a link to the SDK reference.
-  - title: Open by design
-    details: Public specifications, deployment manifests, and source.
+    details: Integrate private USDC flows through the SDK, or earn as an integrator or a relayer.
+    link: /build/
 ---

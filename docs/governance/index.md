@@ -17,7 +17,7 @@ effect.
 - **The Treasury Steward** is an elected role for routine, day-to-day treasury spending, using a
   faster "pass-by-default" process. See [Treasury](/governance/treasury).
 - **The Security Council** is a small multisig that acts as an emergency backstop — it can veto a
-  queued proposal, and little else. See
+  queued proposal. See
   [Security Council](/governance/security-council).
 
 ## What governance can and can't do

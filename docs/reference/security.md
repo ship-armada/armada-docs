@@ -50,6 +50,9 @@ conservatively without them today:
 
 ## Status
 
-Armada is under active development. These docs describe how the protocol works today and flag, where
-relevant, the parts still evolving toward mainnet — including the security review and audit work that
-is part of that path. Treat the protocol accordingly until those milestones are complete.
+ARM, governance, the treasury, and the revenue-lock and wind-down contracts are live on Ethereum
+mainnet. The shielded pool, fees, shielded yield, and cross-chain spokes are live on testnet and ship
+to mainnet in a later launch. These docs describe the protocol as it will operate once fully
+launched, and flag where relevant the parts still evolving toward mainnet — including the security
+review and audit work that is part of that path. Treat the protocol accordingly until those
+milestones are complete.

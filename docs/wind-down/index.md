@@ -47,5 +47,4 @@ flowchart TB
 
 After the trigger, the protocol is in a permanent terminal state. Everything left is permissionless:
 holders [redeem](/wind-down/redemption) their treasury share, and shielded users unshield whenever
-they want. Governance is gone; the Security Council retains only a single, non-renewable 24-hour
-pause (in case an issue affects withdrawals), and nothing else.
+they want. Governance is gone, and no role can pause or restrict withdrawals.

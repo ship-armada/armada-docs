@@ -17,10 +17,10 @@ Quorum is the minimum participation a proposal needs. It is the **greater of two
 
 - a **percentage** of circulating voting power — **20%** for Standard proposals, **30%** for
   Extended; and
-- an absolute **floor of 100,000 ARM.**
+- an absolute **floor of 200,000 ARM.**
 
 The floor matters because the percentage alone could be tiny early on, when little ARM is circulating
-and delegated. Requiring at least 100,000 ARM of participation stops proposals from passing on
+and delegated. Requiring at least 200,000 ARM of participation stops proposals from passing on
 near-zero turnout regardless of how much ARM is active at the time. Participation counts all votes —
 For, Against, and Abstain alike.
 
@@ -30,8 +30,8 @@ The percentage is measured against **circulating voting power**, not the raw tot
 total, the protocol subtracts:
 
 - the **treasury** (protocol-owned ARM never votes), and
-- **excluded addresses** — the crowdfund and revenue-lock contracts, whose ARM is allocated or
-  locked but not yet in holders' hands.
+- **excluded addresses** — the crowdfund, revenue-lock, and reserve-distributor contracts, whose ARM
+  is allocated or locked but not yet in holders' hands.
 
 This is snapshotted when the proposal is created, so the target can't shift mid-vote, and it keeps
 non-voteable ARM from inflating the bar that real participants have to clear. A proposal **succeeds**

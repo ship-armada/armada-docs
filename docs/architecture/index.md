@@ -40,10 +40,10 @@ The hub carries the full protocol; a spoke carries only the bridge contracts.
 | | Hub chain | Spoke chain |
 |---|---|---|
 | **Shielded pool** | `PrivacyPool` + Shield / Transact / Merkle / Verifier modules | `PrivacyPoolClient` (no shielded state) |
-| **Cross-chain** | `CCTPHookRouter`, plus a gasless-shield wrapper | `CCTPHookRouter`, plus a gasless-shield wrapper |
+| **Cross-chain** | `CCTPHookRouter`, plus `GaslessShieldWrapper` | `CCTPHookRouter`, plus `GaslessShieldWrapperClient` |
 | **Yield** | `ArmadaYieldVault` + `ArmadaYieldAdapter` | — |
 | **Fees** | `ArmadaFeeModule` | — |
-| **Governance** | Governor, timelock, treasury, ARM token, revenue counter/lock, wind-down, redemption, steward, adapter registry, pause controller | — |
+| **Governance** | Governor, timelock, treasury, ARM token, revenue counter/lock, reserve distributor, wind-down, redemption, steward, adapter registry, pause controller | — |
 
 A spoke needs to know only two things about the hub: the hub's CCTP **domain** and the hub
 `PrivacyPool` **address**. It uses those to address the USDC it bridges. The hub, in turn, records

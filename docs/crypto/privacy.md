@@ -9,10 +9,11 @@ assumptions behind it.
 
 | Operation | Stays private | Visible on-chain |
 |---|---|---|
-| **In-pool transfer** | Everything — amounts, sender, recipient, and any link between notes | Nothing |
+| **In-pool transfer** | Everything — amounts, sender, recipient, and any link between notes | That a transaction occurred, when, and its shape (inputs × outputs), plus opaque values — nullifiers, new commitments, encrypted notes. Nothing reveals amounts, parties, or which notes were spent |
 | **Shield** | The link between the deposit and your later in-pool activity | The deposit amount and the depositing address |
 | **Unshield** | Which note it came from, and your in-pool history | The withdrawn amount and the recipient |
-| **Cross-chain** | (Privacy begins *after* the bridge) | The CCTP message — amount, destination note key, routing |
+| **Cross-chain shield** | As for a shield; privacy begins once the deposit lands in the pool | The source-chain deposit amount and depositing address, and the CCTP message — amount, destination note key, routing |
+| **Cross-chain unshield** | As for an unshield | The withdrawn amount, and the destination-chain recipient in the CCTP message |
 | **Shielded yield** | *Whose* position it is | The vault deposit and redemption amounts |
 
 The through-line: **in-pool activity is fully private; the edges — shielding, unshielding, bridging,
@@ -61,7 +62,8 @@ Stated plainly, so there is no confusion:
 Privacy in Armada is the default, not a mandate. Because viewing and spending are separate keys, a
 user can share a [viewing key](/crypto/#keys-and-addresses) to grant an auditor, counterparty, or
 regulator read-only visibility into their own activity — selective disclosure that is always the
-holder's choice.
+holder's choice. A shared viewing key cannot be revoked, so it covers all past and future activity at
+that address.
 
 Conversely, using the pool is **never** conditioned on disclosure. The protocol's
 [governance rules](/governance/scope) forbid making pool access contingent on attestation,

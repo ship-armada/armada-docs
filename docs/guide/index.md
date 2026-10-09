@@ -63,8 +63,10 @@ later. Armada's core is therefore built to be **durable**: the cryptographic poo
 guarantees are immutable, and the parts that are governable are bounded by explicit, public rules.
 
 ::: info Status
-Armada is under active development, with the protocol live on testnet. These docs describe how the
-protocol works today and note where it is still evolving toward mainnet.
+ARM, governance, the treasury, and the revenue-lock and wind-down contracts are live on Ethereum
+mainnet. The shielded pool, fees, shielded yield, and cross-chain spokes are live on testnet and ship
+to mainnet in a later launch. These docs describe the protocol as it will operate once fully
+launched.
 :::
 
 ## Where to go next

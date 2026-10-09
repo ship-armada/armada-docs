@@ -11,8 +11,9 @@ Throughout, the workhorse hash is **Poseidon** — a hash function designed to b
 ## Notes and commitments
 
 A **note** is a unit of private value. It records three things: the recipient's **note key**
-(`npk`), the **token**, and the **value**. Only the note's owner (and anyone holding their viewing
-key) can see those fields.
+(`npk`), the **token**, and the **value**. For notes created by a private transfer, only the sender
+and recipient (and anyone holding their viewing keys) can read those fields. A note created by a
+shield publishes them in the clear; privacy begins once that note is spent.
 
 What the pool actually stores is the note's **commitment** — a Poseidon hash of its contents:
 
@@ -62,7 +63,7 @@ viewing ability, and note ownership together:
 %%{init: {"flowchart": {"wrappingWidth": 500, "nodeSpacing": 40, "rankSpacing": 45}, "themeVariables": {"fontSize": "16px"}}}%%
 flowchart TB
   S(["Seed"]) --> SP["Spending key<br/>(BabyJubJub)"]
-  S --> VP["Viewing key<br/>(Curve25519)"]
+  S --> VP["Viewing key<br/>(Ed25519)"]
   VP --> NK["Nullifying key<br/>= Poseidon(viewing key)"]
   SP --> MPK["Master public key<br/>= Poseidon(spending public key, nullifying key)"]
   NK --> MPK
@@ -71,8 +72,9 @@ flowchart TB
 
 - **Spending key** (BabyJubJub) — authorizes spending. A spend is signed inside the proof with this
   key, so only its holder can move the funds.
-- **Viewing key** (Curve25519) — detects and decrypts your incoming notes. It grants visibility, not
-  spending power.
+- **Viewing key** (Ed25519) — detects and decrypts your incoming and outgoing notes, and reveals when
+  your notes are spent. It grants full read access to your history and balance, but no spending
+  power.
 - **Nullifying key** — derived from the viewing key; used to compute a note's nullifier.
 - **Master public key** — Poseidon of your spending public key and nullifying key. It is the stable
   identity your notes are addressed to.
@@ -87,3 +89,8 @@ Because viewing and spending are separate keys, you can hand out a **shareable v
 viewing private key plus your spending *public* key) to let an auditor or counterparty *see* your
 activity without any ability to *spend* it. This is the basis for voluntary, selective disclosure —
 it is always the holder's choice, never a condition of using the pool.
+
+Sharing a viewing key is **permanent**: keys derive deterministically from the seed and cannot be
+rotated or revoked, so the holder sees all past *and future* activity at that address. To limit what
+a disclosure covers, use a separate address (a different derivation index from the same seed) for
+each disclosure scope.

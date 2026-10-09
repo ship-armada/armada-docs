@@ -6,14 +6,12 @@ a bad outcome, but it cannot move value or change the protocol.
 
 ## What it can do
 
-- **Pause new shields.** The Council can halt new deposits into the pool — for example if an issue
-  is suspected. The pause **auto-expires after 24 hours** and can be re-invoked, but each invocation
-  is a visible on-chain event. Crucially, **unshields are never paused** — users can always exit.
-- **Veto a queued proposal.** During a proposal's execution delay, the Council can cancel it before
-  it executes, publishing a rationale.
+The Council's standing power is to **veto a queued proposal.** During a proposal's execution delay,
+the Council can cancel it before it executes, publishing a rationale. (During the one-time crowdfund,
+it can also cancel the sale before it finalizes.)
 
-That's the whole list. The Council **cannot** move treasury funds, upgrade contracts, change fees or
-parameters, pause unshields, or execute arbitrary transactions.
+The Council **cannot** move treasury funds, upgrade contracts, change fees or parameters, pause
+shields or unshields, or execute arbitrary transactions.
 
 ## Veto, ratification, and ejection
 
@@ -22,12 +20,12 @@ A veto is not the last word — it triggers an automatic vote that holds the Cou
 ```mermaid
 %%{init: {"flowchart": {"wrappingWidth": 280, "nodeSpacing": 40, "rankSpacing": 42}, "themeVariables": {"fontSize": "16px"}}}%%
 flowchart TB
-  V["Security Council vetoes a queued proposal"] --> R["An automatic 7-day ratification vote opens: uphold the veto?"]
+  V["Security Council vetoes a queued proposal"] --> R["An automatic 14-day ratification vote opens: uphold the veto?"]
   R -->|"upheld, or quorum not met"| U["The proposal stays cancelled"]
   R -->|"denied — majority Against with quorum"| D["The proposal is restored AND the Security Council is ejected"]
 ```
 
-When the Council vetoes, a **7-day ratification vote** opens asking holders to uphold the veto. If
+When the Council vetoes, a **14-day ratification vote** opens asking holders to uphold the veto. If
 they uphold it — or don't reach quorum — the veto stands. But if they **deny** it (a majority votes
 Against, with quorum), two things happen at once: the vetoed proposal is **restored** and re-queued,
 and **the Security Council is ejected** — its address is removed, and governance must elect a new one.

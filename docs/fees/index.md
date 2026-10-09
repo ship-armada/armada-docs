@@ -51,6 +51,6 @@ you withdraw.
 
 ## Who sets the fees
 
-Every fee parameter above is controlled by [governance](/governance/), and the direction matters:
-raising a fee is a higher-bar governance action than lowering one, so fees are structurally easier
-to cut than to increase. No operational role can change fee rates unilaterally.
+Every fee parameter above is controlled by [governance](/governance/). Any fee change, up or down,
+requires an [Extended](/governance/proposals) proposal, the higher governance bar. No operational
+role can change fee rates unilaterally.

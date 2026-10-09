@@ -7,7 +7,7 @@ voted with.
 ```mermaid
 %%{init: {"flowchart": {"wrappingWidth": 420, "nodeSpacing": 45, "rankSpacing": 50}, "themeVariables": {"fontSize": "16px"}}}%%
 flowchart TB
-  A["<b>Non-transferable</b><br/>Only whitelisted contracts can move ARM — crowdfund claims, revenue-lock releases, treasury distributions"] -->|"governance unlock, or wind-down"| B["<b>Globally transferable</b><br/>Anyone can transfer ARM"]
+  A["<b>Non-transferable</b><br/>Only whitelisted contracts can move ARM — crowdfund claims, revenue-lock releases, reserve grants, treasury distributions"] -->|"governance unlock, or wind-down"| B["<b>Globally transferable</b><br/>Anyone can transfer ARM"]
 ```
 
 ## Why start non-transferable
@@ -24,6 +24,8 @@ into holders' hands:
 
 - **Crowdfund** — participants claim their purchased ARM.
 - **Revenue-lock** — early-network tokens are released to beneficiaries as revenue milestones are met.
+- **Reserve distributor** — pays contributor grants from the early-network reserve as it unlocks (see
+  [the contributor reserve](/revenue/lock#the-contributor-reserve)).
 - **Treasury** — governance distributes ARM from the treasury.
 
 The whitelist is **add-only** and managed by [governance](/governance/) (the timelock); there is no

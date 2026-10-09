@@ -50,10 +50,11 @@ shared without handing over control.
 : The private key that authorizes spending. Whoever holds it controls the funds.
 
 **Viewing key**
-: A separate key that lets its holder detect and decrypt your notes — your incoming payments and
-  balances — without power to spend. A **shareable viewing key** grants read-only visibility to an
-  auditor or counterparty. Sharing is permanent: you cannot un-share what someone could already
-  decrypt.
+: A separate key that lets its holder detect and decrypt your notes — incoming and outgoing — and
+  see when they are spent, giving full read access to your history and balance without power to
+  spend. A **shareable viewing key** grants that read-only visibility to an auditor or counterparty.
+  Sharing is permanent: it cannot be revoked, and it covers all past and future activity at that
+  address.
 
 **Nullifying key**
 : The key material used to derive a note's nullifier, tying the "spent" marker to the spender

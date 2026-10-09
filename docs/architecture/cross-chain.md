@@ -116,9 +116,6 @@ domain or an unknown source contract is rejected even if it is validly attested.
 
 ## Availability: you can always exit
 
-Because a spoke never holds shielded state, exiting the system is a hub operation. Unshields remain
-available even when new shields are paused: the shield-pause control (used by the
-[Security Council](/governance/security-council) for emergencies) halts *new shields only* and
-auto-expires; it never blocks unshields. The one exception is the single, non-renewable 24-hour
-emergency pause available after [wind-down](/wind-down/), which halts all pool operations briefly;
-outside that narrow case, users can always withdraw.
+Because a spoke never holds shielded state, exiting the system is a hub operation. No role can pause
+unshields. After [wind-down](/wind-down/), the pool becomes withdraw-only: new shields and in-pool
+transfers stop, but unshields remain open indefinitely. Users can always withdraw.

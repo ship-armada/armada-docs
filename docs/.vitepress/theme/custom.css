@@ -1,5 +1,5 @@
-/* ABOUTME: Armada brand accents for the docs. Recolors the accent (links, buttons, active states,
-   ABOUTME: hero) to the interface palette; backgrounds and body text keep VitePress defaults for readability. */
+/* ABOUTME: Armada brand accents (links, buttons, active states, hero) over VitePress defaults, plus
+   ABOUTME: Mermaid diagram layout fixes so labels in the prose column don't clip or overflow. */
 
 /* Light mode. Accent is the interface's brand-action (violet-500), dark enough to read on white. */
 :root {

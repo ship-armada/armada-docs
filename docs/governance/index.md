@@ -16,8 +16,8 @@ effect.
   timelock and execute only after a delay, giving the community time to react.
 - **The Treasury Steward** is an elected role for routine, day-to-day treasury spending, using a
   faster "pass-by-default" process. See [Treasury](/governance/treasury).
-- **The Security Council** is a small multisig that acts as an emergency backstop — it can pause new
-  shields and veto a queued proposal, but nothing more. See
+- **The Security Council** is a small multisig that acts as an emergency backstop — it can veto a
+  queued proposal. See
   [Security Council](/governance/security-council).
 
 ## What governance can and can't do

@@ -18,7 +18,7 @@ flowchart TB
 
 To submit a proposal you need **5,000 delegated ARM** — the sole spam defense (there is no proposal
 bond). A succeeded proposal must be queued within a grace period or it expires. And for a one-time
-**quiet period** of 7 days after the crowdfund finalizes, no proposals can be submitted at all,
+**quiet period** of 10 days after the crowdfund finalizes, no proposals can be submitted at all,
 giving the protocol a moment to settle at launch.
 
 ## Proposal types
@@ -28,11 +28,11 @@ whether they execute at all:
 
 | Type | Voting period | Quorum | Execution delay | Purpose |
 |---|---|---|---|---|
-| **Standard** | 7 days | 20% | 2 days | Routine changes and risk-*reducing* actions |
+| **Standard** | 7 days | 20% | 3 days | Routine changes and risk-*reducing* actions |
 | **Extended** | 14 days | 30% | 7 days | Risk-*increasing* / authority-granting actions — a higher bar |
 | **Signaling** | 7 days | 20% | — (never executes) | Non-binding measure of community sentiment |
 | **Steward** | 7 days | 20% | 2 days | Routine treasury spending by the elected steward (pass-by-default) |
-| **Veto-ratification** | 7 days | 20% | — | Auto-created when the Security Council vetoes; asks holders to uphold or overturn |
+| **Veto-ratification** | 14 days | 20% | — | Auto-created when the Security Council vetoes; asks holders to uphold or overturn |
 
 Standard and Extended both have a 2-day delay before voting opens. **Steward** and
 **veto-ratification** proposals are **pass-by-default** — they take effect unless the community
@@ -43,9 +43,9 @@ routine or council-triggered actions: the community only needs to act to *stop* 
 
 Whether an action is Standard or Extended is decided automatically from what it does. The principle:
 **actions that reduce risk or revoke authority face a lower bar than actions that expand risk or
-grant authority.** Raising a fee, authorizing a new adapter, changing the Security Council, or
-upgrading a contract are Extended; lowering a fee, deauthorizing an adapter, or removing the steward
-are Standard. A treasury distribution above 5% of the treasury balance is automatically Extended.
+grant authority.** Authorizing a new adapter, changing the Security Council, or upgrading a contract
+are Extended; deauthorizing an adapter or removing the steward are Standard. Fee changes are Extended
+in either direction. A treasury distribution above 5% of the treasury balance is automatically Extended.
 
 ::: info Implementation note
 The classifier is currently **conservative**: rather than comparing a proposal's proposed value

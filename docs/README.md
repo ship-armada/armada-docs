@@ -1,7 +1,7 @@
 # Armada protocol docs
 
 This directory is the source for the Armada protocol documentation site, built with
-[VitePress](https://vitepress.dev). Hand-written guides live in `guide/`.
+[VitePress](https://vitepress.dev). Each top-level directory is one section of the site's sidebar.
 
 ## Working on the docs
 
@@ -22,11 +22,26 @@ npm run docs:build && npm run docs:preview
 
 | Path | What it is |
 | --- | --- |
-| `guide/*.md` | Hand-written guide pages |
 | `index.md` | Landing page |
-| `.vitepress/config.mts` | Site config — nav, sidebar, search |
-| `.vitepress/theme/` | Armada brand accents over the default VitePress theme |
-| `public/CNAME` | Custom domain for GitHub Pages (`docs.armada.blue`) |
+| `guide/` | Introduction — what Armada is, core concepts, architecture at a glance |
+| `architecture/` | Hub-and-spoke topology, the PrivacyPool, cross-chain flow, contract map |
+| `flows/` | Core flows — shield, transfer, unshield, shielded yield, payments |
+| `crypto/` | Notes, the proof system, and the privacy model |
+| `fees/` | Protocol, integrator, and relayer fees |
+| `token/` | The ARM token — transfer restrictions, voting and delegation |
+| `governance/` | Governance model, proposals, voting, scope, treasury, Security Council, upgrades |
+| `revenue/` | Revenue-based unlock — the revenue counter and the revenue lock |
+| `wind-down/` | Wind-down and redemption |
+| `build/` | Building on Armada (API detail lives in the SDK docs) |
+| `reference/` | Parameters, and security & limitations |
+| `.vitepress/config.mts` | Site config — nav, sidebar, search, Mermaid |
+| `.vitepress/theme/` | Armada brand accents and Mermaid diagram layout fixes over the default VitePress theme |
+| `public/` | Static assets — logo, favicons, and `CNAME` (custom domain `docs.armada.blue`) |
+
+New pages must also be added to the sidebar in `.vitepress/config.mts`.
+
+Diagrams are written in Mermaid. Check them in `npm run docs:dev` rather than an external renderer:
+the site's theme CSS affects how diagram labels fit.
 
 ## Deployment
 

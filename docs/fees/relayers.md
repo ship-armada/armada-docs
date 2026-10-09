@@ -1,7 +1,7 @@
 # Relayer fees
 
 A [relayer](/architecture/cross-chain) submits your transaction on-chain and pays the gas, so your
-own address never has to. Relayer fees are **separate from protocol fees** — the protocol takes no
+own address doesn't have to. Relayer fees are **separate from protocol fees** — the protocol takes no
 cut of them.
 
 ## How relayers are paid
@@ -12,8 +12,10 @@ so you never have to hold or spend public gas tokens.
 
 Two properties keep this honest:
 
-- **No protocol cut.** The relayer keeps its whole fee; Armada takes nothing from it, and the
-  re-shielded relayer fee is exempt from the shield fee.
+- **No protocol cut on in-pool operations.** For transfers, unshields, and shielded yield, the
+  relayer's fee is an output note inside the proven transaction (or re-shielded by the yield
+  adapter), so Armada takes nothing from it. On a **gasless shield** the relayer's fee note is itself
+  a deposit and pays the normal shield fee; relayers price their gasless-shield quotes to cover it.
 - **The relayer can't inflate it.** The fee amount and its destination are committed inside the
   transaction you authorize — bound into the proof for in-pool operations, and fixed in the signed
   request for gasless shields. A relayer can decline to submit, but it cannot rewrite the fee after
@@ -25,8 +27,10 @@ Because it's a competitive market, you can choose among relayers on price and re
 
 It's tempting to think of a relayer purely as a way to avoid holding gas — but its more important
 role is **privacy**. Submitting a transaction yourself puts your funded, public address on it as the
-sender and gas payer, which re-links that public identity to the shielded operation. Relaying keeps
-your address off the transaction entirely.
+sender and gas payer, which re-links that public identity to the shielded operation. For operations
+that spend shielded notes — transfers, unshields, and shielded yield — relaying keeps your address
+off the transaction entirely. A shield is different: every deposit reveals the funding address, so a
+relayed (gasless) shield only removes the need to hold gas.
 
 Self-submitting is therefore best understood as a **liveness fallback** — a way to get a transaction
 in if no relayer will serve you — **not** a way to save money. Doing it trades away much of the

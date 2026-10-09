@@ -16,7 +16,15 @@ your share = (contract's balance of the asset) × (your ARM) ÷ (circulating ARM
 
 The ARM you deposit stays locked in the redemption contract permanently (it isn't burned — ARM has no
 burn function — but the redemption math excludes it, so the accounting stays correct). Redeeming is
-self-service and can be done in as many transactions as you like.
+self-service, and you can split your ARM across as many redemptions as you like.
+
+::: warning List every asset
+Each redemption pays out only the assets you list. Any swept asset left out of a call is forfeited
+for the ARM deposited in that call — it can't be claimed later. To make this hard to get wrong, a
+**redemption router** can be deployed during the delay window, once all sweeps are complete, with the
+full list of swept assets built in: one call through it claims your share of every asset. The router
+is immutable and its asset list is public, so anyone can check it before using it.
+:::
 
 ## The circulating denominator
 
@@ -32,9 +40,9 @@ Because those are excluded, the per-ARM payout reflects only ARM that actually b
 participants. Claiming or releasing ARM before redeeming doesn't change your outcome — the same ARM
 is counted as circulating either way — so early and late redeemers receive the same rate.
 
-## The 7-day delay
+## The 14-day delay
 
-Redemptions can't begin until **7 days after the trigger.** This window exists because sweeping the
+Redemptions can't begin until **14 days after the trigger.** This window exists because sweeping the
 treasury into the redemption contract is itself permissionless and done token-by-token — the delay
 gives anyone time to move all of the treasury's assets in before the first redemption executes, so
 early redeemers don't miss assets that hadn't been swept yet. After the delay, redemption is open

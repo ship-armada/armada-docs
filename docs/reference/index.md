@@ -34,11 +34,11 @@ Private transfers and unshields carry no protocol fee. See [Fees](/fees/).
 |---|---|---|
 | Proposal threshold | 5,000 ARM | Fixed |
 | Quorum — Standard / Extended | 20% / 30% of circulating voting power | Governable |
-| Quorum floor | 100,000 ARM | Fixed |
+| Quorum floor | 200,000 ARM | Fixed |
 | Voting delay | 2 days | Governable |
 | Voting period — Standard / Extended | 7 days / 14 days | Governable |
-| Execution delay — Standard / Extended | 2 days / 7 days | Governable |
-| Quiet period (post-crowdfund) | 7 days, one-time | Fixed |
+| Execution delay — Standard / Extended | 3 days / 7 days | Governable |
+| Quiet period (post-crowdfund) | 10 days, one-time | Fixed |
 | Treasury Steward term | 180 days (6 months) | Fixed |
 | Treasury outflow limits | Rolling-window caps (greater of a % or an absolute, with an immutable floor) | Values set by governance |
 | Outflow loosening activation delay | 24 days | Fixed |
@@ -69,7 +69,7 @@ See [Cryptography & privacy](/crypto/).
 
 | Parameter | Value | |
 |---|---|---|
-| Redemption delay | 7 days after trigger | Fixed |
+| Redemption delay | 14 days after trigger | Fixed |
 | Wind-down deadline & revenue threshold | Set by governance | Governable |
 
 See [Wind-down](/wind-down/).

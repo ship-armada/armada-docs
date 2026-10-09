@@ -18,9 +18,9 @@ immutable side, enforced by code rather than policy.
 | **ARM token** | Adding an address to the transfer whitelist (add-only); enabling global transfers |
 | **Signaling** | Non-binding preference votes |
 
-Fee *increases*, adapter *authorizations*, upgrades, and Security Council changes take the higher
-[Extended](/governance/proposals) bar; the corresponding *decreases* and *revocations* take the
-lower Standard bar.
+Adapter *authorizations*, upgrades, and Security Council changes take the higher
+[Extended](/governance/proposals) bar; the corresponding *revocations* take the lower Standard bar.
+Fee changes take the Extended bar in either direction.
 
 ## Immutable
 

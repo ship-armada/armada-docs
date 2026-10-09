@@ -16,7 +16,8 @@ concrete addresses for any deployment are in the
 | `VerifierModule` | Hub | Holds proof verification keys | Keys settable by governance | No (contract); keys rotatable |
 | `PrivacyPoolClient` | Spoke | Thin bridge — sends USDC to the hub, delivers unshielded USDC; no shielded state | Owner (hub pointer, hook router, finality) | No |
 | `CCTPHookRouter` | Hub + Spoke | Receives CCTP messages, mints USDC and calls the destination contract atomically | Relayer-gated relay entrypoint | No |
-| gasless-shield wrapper | Hub + Spoke | Optional permit-based entrypoint for gasless shields | — | No |
+| `GaslessShieldWrapper` | Hub | Optional gasless-shield entrypoint — the user signs a USDC permit and a shield intent; any relayer submits and is paid with a shielded fee note | — (immutable, permissionless) | No |
+| `GaslessShieldWrapperClient` | Spoke | The same, for cross-chain shields — the relayer's fee note is created on the hub once the deposit arrives | — (immutable, permissionless) | No |
 
 See [The PrivacyPool](/architecture/privacy-pool) and [Cross-chain flow](/architecture/cross-chain).
 
@@ -49,11 +50,13 @@ integrator (their share). See [Fees](/fees/).
 | `ArmadaTreasuryGov` | Hub | The treasury — holds protocol assets, enforces outflow limits | Timelock | No |
 | `TreasurySteward` | Hub | Elected role for routine, pass-by-default treasury spending | Governance | No |
 | `AdapterRegistry` | Hub | The list of adapters authorized to touch the shielded-yield surface | Timelock | No |
-| `ShieldPauseController` | Hub | Holds the pause flags the Security Council can set | Timelock / Security Council | No |
+| `ShieldPauseController` | Hub | Switches the shielded pool to withdraw-only when wind-down triggers | Wind-down contract (one-way) | No |
 | `RevenueCounter` | Hub | The canonical cumulative-revenue figure the unlock schedule reads | Governance | Yes (UUPS, via timelock) |
-| `RevenueLock` | Hub | Holds team ARM, releases it as revenue milestones are met | — (immutable) | No |
+| `RevenueLock` | Hub | Holds early-network ARM, releases it as revenue milestones are met | — (immutable) | No |
+| `RevenueReserveDistributor` | Hub | Holds the contributor reserve as one revenue-lock beneficiary; pays out irrevocable grants as the reserve unlocks | Allocator multisig (add-only grants) | No |
 | `ArmadaWindDown` | Hub | Triggers the terminal wind-down and its sweeps | — (immutable trigger logic) | No |
 | `ArmadaRedemption` | Hub | Post-wind-down pro-rata redemption of treasury assets for ARM | — (immutable, permissionless) | No |
+| `RedemptionRouter` | Hub | Optional post-wind-down wrapper that redeems every swept asset in one call; deployed only after wind-down | — (immutable, permissionless) | No |
 
 See [Governance](/governance/), [Revenue-based unlock](/revenue/), and [Wind-down](/wind-down/).
 

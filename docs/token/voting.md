@@ -32,7 +32,8 @@ Two of the paths that put ARM into circulation — [crowdfund](/token/) claims a
 [revenue-lock](/revenue/) releases — **delegate atomically.** When you claim or release, you choose a
 delegatee in the same transaction, so the ARM enters your wallet already active in governance. (You
 can pick yourself; it's still an explicit choice.) This keeps circulating ARM from sitting idle and
-vote-inert.
+vote-inert. Grants from the [contributor reserve](/revenue/lock#the-contributor-reserve) are the
+exception: they arrive undelegated, and the grantee delegates them separately.
 
 ## One level of delegation
 
@@ -44,8 +45,9 @@ delegated to.
 
 - The **treasury** cannot delegate or vote at all — the token itself blocks it, so protocol-owned ARM
   never influences governance.
-- ARM still held inside the **crowdfund** or **revenue-lock** contracts (allocated or locked, but not
-  yet claimed or released) is excluded from governance until it circulates.
+- ARM still held inside the **crowdfund**, **revenue-lock**, or **reserve distributor** contracts
+  (allocated or locked, but not yet claimed, released, or paid out) is excluded from governance until
+  it circulates.
 
 ---
 

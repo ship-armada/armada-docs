@@ -15,11 +15,31 @@ A beneficiary claims by calling `release`, naming a delegatee. The contract:
    taken, and
 3. **transfers the newly unlocked ARM and delegates it in the same transaction.**
 
-Because release and delegation are atomic, early-network ARM enters circulation already active in
-[governance](/token/voting) — it is never left sitting undelegated. Releasing is pull-based: tokens
+Because release and delegation are atomic, ARM released directly to a beneficiary enters circulation
+already active in [governance](/token/voting) — it is never left sitting undelegated. (Grants paid
+from the [contributor reserve](#the-contributor-reserve) are the exception.) Releasing is pull-based: tokens
 stay in the lock until a beneficiary chooses to claim, and claiming repeatedly between milestones is
 harmless (it simply releases whatever new amount has unlocked). Releases can only begin once the lock
 has actually been funded with the full allocation.
+
+## The contributor reserve
+
+One revenue-lock beneficiary is a contract rather than a person: the **RevenueReserveDistributor**,
+which holds the reserve for future contributors — 402,950 ARM of the early-network allocation. It
+unlocks on the same milestone schedule as every other allocation; what differs is who receives it.
+
+- An **allocator** — a dedicated 2-of-3 multisig — assigns grants from the reserve to contributors,
+  up to the fixed reserve cap. Grants are **irrevocable**: they can be added but never reduced, and
+  the cap cannot be raised.
+- As milestones unlock, anyone can trigger collection and payout. Each grantee receives the same
+  unlocked percentage of their grant as every other early-network beneficiary receives of theirs.
+- Reserve payouts arrive **undelegated** — the grantee must delegate before the ARM counts in
+  governance.
+- At [wind-down](/wind-down/), new grants stop permanently, and any unassigned remainder belongs to
+  the allocator, subject to the same frozen unlock percentage.
+
+The distributor is immutable: no upgrades, no sweep, and no admin power beyond the allocator's
+add-only grants.
 
 ## The rate-limited ratchet
 
